@@ -1,38 +1,68 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import '../../App.css'
+import "../../App.css";
 
 export default function SignUpPage() {
-
-    return (
-        <div className="text-center m-5-auto">
-            <h2>Join us</h2>
-            <h5>Create your personal account</h5>
-            <form action="/home">
-                <p>
-                    <label>Username</label><br/>
-                    <input type="text" name="first_name" required />
-                </p>
-                <p>
-                    <label>Email address</label><br/>
-                    <input type="email" name="email" required />
-                </p>
-                <p>
-                    <label>Password</label><br/>
-                    <input type="password" name="password" requiredc />
-                </p>
-                <p>
-                    <input type="checkbox" name="checkbox" id="checkbox" required /> <span>I agree all statements in <a href="https://google.com" target="_blank" rel="noopener noreferrer">terms of service</a></span>.
-                </p>
-                <p>
-                    <button id="sub_btn" type="submit">Register</button>
-                </p>
-            </form>
-            <footer>
-                <p><Link to="/">Back to Homepage</Link>.</p>
-            </footer>
+  return (
+    <body>
+      <div className="container">
+        <div className="formWraper">
+          <div className="welcomeDiv">
+            <h2>
+              Welcome to <i id="nityo">Nityo Infotech!</i>
+            </h2>
+            <p className="text">
+              Get in touch with us for deliver smarter outcomes with Nityo's
+              Artificial Intelligence Services.
+            </p>
+            <Link to="/login">
+              <button className="btn2">
+                <span>Sign In</span>
+              </button>
+            </Link>
+          </div>
+          <div className="formDiv">
+            <h2>Create Account</h2>
+            <p className="text"> Sign Up with Social Media</p>
+            <div className="socialBtn">
+              <div className="facebook icon">
+                <i className="fab fa-facebook-f"></i>
+              </div>
+              <div className="twitter icon">
+                <i className="fab fa-twitter"></i>
+              </div>
+              <div className="instagram icon">
+                <i className="fab fa-instagram"></i>
+              </div>
+            </div>
+            <div className="orDiv">Or</div>
+            <p className="text">Sign Up with Email Address</p>
+            <div className="formGroup">
+              <i className="far fa-user"></i>
+              <input type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div className="formGroup">
+              <i className="far fa-envelope"></i>
+              <input type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            <div className="formGroup">
+              <i className="fas fa-lock"></i>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
+            </div>
+            <div className="checkBox">
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <span className="text">I Agree with Term & Conditions.</span>
+            </div>
+            <button className="btn">SIGN UP</button>
+          </div>
         </div>
-    )
-
+      </div>
+    </body>
+  );
 }
