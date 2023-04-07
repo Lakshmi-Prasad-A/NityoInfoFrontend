@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 
 const API_URL = "http://localhost:8080/nityoinfo/";
-function Service(){
+
     const register = (username, email, password) => {
         return axios.post(API_URL + "saveUser", {
           username,
@@ -29,9 +29,7 @@ function Service(){
       const Service = {
         register,
         login,
-        getCurrentUser,
       }
     }
-}
 
       export default Service;

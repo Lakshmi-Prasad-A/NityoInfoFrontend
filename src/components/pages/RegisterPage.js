@@ -4,15 +4,8 @@ import axios from "axios";
 
 import "../../App.css";
 
-
-
-
-export default function SignUpPage() {
-
-  
+export default function SignUpPage() {  
 const API_URL = "http://localhost:8080/nityoinfo/";
-
-
   const signUpDefaultValues = {
     userName:"",
     email:"",
@@ -40,7 +33,6 @@ const API_URL = "http://localhost:8080/nityoinfo/";
           alert(response.data);
             
     });
-
   }
   
   return (

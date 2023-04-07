@@ -24,17 +24,7 @@ export default function SignInPage() {
       console.log(response.data);
       alert("User Successfully Login")
     });
-  }
-
-
-  // const funChange(t){
-    
-  // }
-  // const handleChange = event => {
-  //   setMessage(event.target.value);
-  //   console.log('value is:', event.target.value);
-  // }
-  
+  }  
 
   return (
     <div className="container">
