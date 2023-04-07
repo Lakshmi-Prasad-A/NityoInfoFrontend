@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "../../App.css";
 
@@ -7,10 +8,22 @@ export default function SignInPage() {
 
   const[email, setEmail] = useState('');
   const[password,setPassword]=useState('');
+  const API_URL = "http://localhost:8080/nityoinfo/";
 
   const submitHandle = e=>{
     e.preventDefault();
     console.log(email+">>>"+password);
+
+    axios.post(API_URL + "signin", {
+      email,
+      password,
+    }).then((response)=>{
+      if(response.data.username){
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
+      console.log(response.data);
+      alert("User Successfully Login")
+    });
   }
 
 
@@ -60,8 +73,8 @@ export default function SignInPage() {
                 onChangeCapture={(e)=>setPassword(e.target.value)} value={password}/>
             </div>
             <Link to="/forget-password">
-              <div class="col">
-                <a href="#!">Forgot password?</a>
+              <div className="col">
+                Forgot password?
               </div>
             </Link>
           </div>

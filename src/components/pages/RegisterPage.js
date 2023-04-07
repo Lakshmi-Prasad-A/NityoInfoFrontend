@@ -10,6 +10,8 @@ import "../../App.css";
 export default function SignUpPage() {
 
   
+const API_URL = "http://localhost:8080/nityoinfo/";
+
 
   const signUpDefaultValues = {
     userName:"",
@@ -32,20 +34,17 @@ export default function SignUpPage() {
     e.preventDefault();
     console.log(data);
 
-   
-   axios.post(API_URL + "saveUser", {
-        username,
-        email,
-        password,
-      }).then((response)=>{
-          if(response.data.username){
-              localStorage.setItem("user", JSON.stringify(response.data));
-      };
-      console.log(response.data);
-  });
+    
+       axios.post(API_URL + "saveUser", data).then((response)=>{
+          console.log(JSON.stringify(response));
+          alert(response.data);
+            
+    });
+
+  }
   
   return (
-    <body>
+    
       <div className="container">
         <div className="formWraper">
           <div className="welcomeDiv">
@@ -105,7 +104,6 @@ export default function SignUpPage() {
           </div>
         </div>
       </div>
-    </body>
+    
   );
-}
 }
