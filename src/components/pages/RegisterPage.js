@@ -1,9 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "../../App.css";
 
+
+
+
 export default function SignUpPage() {
+
+  
+
+  const signUpDefaultValues = {
+    userName:"",
+    email:"",
+    password:""
+  }
+
+  const [data, setData] = useState(signUpDefaultValues);
+
+  const changeHandler = e=>{
+    e.preventDefault();
+     const {name,value}=e.target;
+
+     setData({...data,[name]:value});
+
+     console.log(data);
+
+  }
+  const signUpHandler = e=>{
+    e.preventDefault();
+    console.log(data);
+
+   
+   axios.post(API_URL + "saveUser", {
+        username,
+        email,
+        password,
+      }).then((response)=>{
+          if(response.data.username){
+              localStorage.setItem("user", JSON.stringify(response.data));
+      };
+      console.log(response.data);
+  });
+  
   return (
     <body>
       <div className="container">
@@ -40,11 +80,11 @@ export default function SignUpPage() {
             <p className="text">Sign Up with Email Address</p>
             <div className="formGroup">
               <i className="far fa-user"></i>
-              <input type="text" name="name" id="name" placeholder="Name" />
+              <input type="text" name="userName" id="name" placeholder="Name" onChange={changeHandler} value={data.userName}  />
             </div>
             <div className="formGroup">
               <i className="far fa-envelope"></i>
-              <input type="email" name="email" id="email" placeholder="Email" />
+              <input type="email" name="email" id="email" placeholder="Email" onChange={changeHandler} value={data.email}/>
             </div>
             <div className="formGroup">
               <i className="fas fa-lock"></i>
@@ -53,16 +93,19 @@ export default function SignUpPage() {
                 name="password"
                 id="password"
                 placeholder="Password"
+                onChange={changeHandler}
+                value={data.password}
               />
             </div>
             <div className="checkBox">
               <input type="checkbox" name="checkbox" id="checkbox" />
               <span className="text">I Agree with Term & Conditions.</span>
             </div>
-            <button className="btn">SIGN UP</button>
+            <button className="btn" onClick={signUpHandler}>SIGN UP</button>
           </div>
         </div>
       </div>
     </body>
   );
+}
 }
